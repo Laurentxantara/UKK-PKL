@@ -141,7 +141,6 @@ const InsertFormulir = ({ onSuccess }: InsertFormulirProps) => {
     const [guruList, setGuruList] = useState<Guru[]>([]);
     const [industriList, setIndustriList] = useState<Industri[]>([]);
 
-console.log(auth?.user);  
 
     return (
         <>

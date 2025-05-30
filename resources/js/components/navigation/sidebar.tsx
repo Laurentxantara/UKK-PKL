@@ -13,9 +13,6 @@ interface Counts {
     total_siswa: number;
 }
 
-// const handleLogout = () => {
-//     router.post("/logout");
-// };
 
 const Sidebar = () => {
 
