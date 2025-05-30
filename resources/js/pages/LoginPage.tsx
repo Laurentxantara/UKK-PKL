@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button';
 import { Checkbox } from '@/components/ui/checkbox';
 import { FormEventHandler } from 'react';
 import { Link } from '@inertiajs/react';
+import InputError from '@/components/input-error';
 import { Head, useForm } from '@inertiajs/react';
 type LoginForm = {
     email: string;
@@ -15,7 +16,7 @@ type LoginForm = {
 
 export default function LoginPage() {
     
-    const { data, setData, post, reset } = useForm<Required<LoginForm>>({
+    const { data, setData, post, reset, errors } = useForm<Required<LoginForm>>({
             email: '',
             password: '',
             remember: false,
@@ -36,7 +37,7 @@ export default function LoginPage() {
 
     return (
     <>
-    <Head title="Register" />
+    <Head title="Login" />
     <div className="grid grid-cols-1 lg:grid-cols-[1.5fr_1fr] w-full bg-[#02423F]">
         <div className="relative w-full h-40 md:h-screen overflow-hidden">
             <FadeSwiper/>
@@ -52,23 +53,29 @@ export default function LoginPage() {
             </div>
             <form className='flex flex-col space-y-4 md:space-y-8' onSubmit={submit}>
             <div className='flex flex-col items-center justify-center space-y-7 relative'>
-                <div className='relative flex flex-col items-center justify-center'>
-                <span>
-                            <Lucide.Mail strokeWidth={1.5} className='absolute left-2 top-1/2 transform -translate-y-1/2 text-[#106E69]' />
-                        </span>
-                        <Input 
-                            className="w-72 md:w-80 pl-10 py-5 text-black" 
-                            id="email"
-                            type="email"
-                            required
-                            autoFocus
-                            tabIndex={1}
-                            autoComplete="email"
-                            value={data.email}
-                            onChange={(e) => setData('email', e.target.value)}
-                            placeholder="email@example.com"
-                        />
+
+                <div>
+                    <div className='relative flex flex-col items-center justify-center'>
+                    <span>
+                                <Lucide.Mail strokeWidth={1.5} className='absolute left-2 top-1/2 transform -translate-y-1/2 text-[#106E69]' />
+                            </span>
+                            <Input 
+                                className="w-72 md:w-80 pl-10 py-5 text-black" 
+                                id="email"
+                                type="email"
+                                required
+                                autoFocus
+                                tabIndex={1}
+                                autoComplete="email"
+                                value={data.email}
+                                onChange={(e) => setData('email', e.target.value)}
+                                placeholder="Email"
+                                />
                     </div>
+                    <InputError message={errors.email} />
+                </div>
+
+                <div>
                     <div className='relative flex flex-col items-center justify-center'>
                         <span>
                             <Lucide.KeyRound strokeWidth={1.5} className='absolute left-2 top-1/2 transform -translate-y-1/2 text-[#106E69]' />
@@ -83,8 +90,10 @@ export default function LoginPage() {
                             value={data.password}
                             onChange={(e) => setData('password', e.target.value)}
                             placeholder="Password"
-                        />
+                            />
                     </div>
+                    <InputError message={errors.password} />
+                </div>
 
                     <div className='absolute right-0 bottom-0 '>
                         <label className='text-sm text-black flex items-center space-x-2 cursor-pointer select-none'>

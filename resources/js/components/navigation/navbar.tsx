@@ -1,7 +1,7 @@
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
 import * as Icons from "lucide-react";
 import { MobileSidebar } from "@/components/navigation/sidebar";
-import { Link, router, usePage } from "@inertiajs/react";
+import { router, usePage } from "@inertiajs/react";
 
 const handleLogout = () => {
     router.post("/logout");
@@ -57,12 +57,12 @@ const Navbar = () => {
                         </div>
                         </DropdownMenuLabel>
                         <DropdownMenuSeparator />
-                        <DropdownMenuItem className="cursor-pointer">
+                        {/* <DropdownMenuItem className="cursor-pointer">
                             <Link href="/admin" className="flex items-center">
                                 <Icons.Headset className="mr-2" />
                                     Panel Admin
                             </Link>
-                        </DropdownMenuItem>
+                        </DropdownMenuItem> */}
                         <DropdownMenuItem className="cursor-pointer" onSelect={handleLogout}>
                             <Icons.LogOut className="mr-2" />
                                 Logout

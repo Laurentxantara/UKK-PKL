@@ -10,15 +10,21 @@ class EditSiswa extends EditRecord
 {
     protected static string $resource = SiswaResource::class;
 
-    protected function getHeaderActions(): array
+     protected function getHeaderActions(): array
     {
-        return [
-            Actions\DeleteAction::make(),
-        ];
+        $actions = [];
+        
+        if ($this->record->status_pkl !== 'diterima') {
+            $actions[] = Actions\DeleteAction::make();
+        }
+        
+        return $actions;
     }
+    
     
     protected function getRedirectUrl(): string
     {
         return $this->getResource()::getUrl('index');
     }
+
 }
