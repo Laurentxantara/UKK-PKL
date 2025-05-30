@@ -1,4 +1,4 @@
-import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog"
+import { Dialog, DialogTitle, DialogContent, DialogTrigger } from "@/components/ui/dialog"
 import { useEffect, useState } from 'react';
 import { usePage } from '@inertiajs/react';
 import axios from 'axios';
@@ -149,10 +149,12 @@ const InsertFormulir = ({ onSuccess }: InsertFormulirProps) => {
             <DialogTrigger className="absolute right-0 bottom-0 bg-[#106E69] p-2 text-sm font-semibold hover:bg-[#0d5955] cursor-pointer rounded-md ">+ Tambah Laporan</DialogTrigger>
             {/* } */}
             <DialogContent className="rounded-4xl">
+                <DialogTitle>
                 <div className="mb-4">
                     <h2 className="text-xl text-black font-bold">Tambah Data PKL</h2>
                     <p className="text-black">Masukkan Data Diri Anda</p>
                 </div>
+                </DialogTitle>
                 <form onSubmit={handleSubmit}>
                     <div className="grid grid-cols-1 gap-4">
                         <div>
